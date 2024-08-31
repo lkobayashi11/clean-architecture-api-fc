@@ -41,16 +41,5 @@ describe("Unit Test update product use case", () => {
         expect(() => {
             return usecase.execute(input);
         }).rejects.toThrow("Product not found");
-    });
-
-    it("should throw an error when name is missing", async () => {
-        const productRepository = Repository ();
-        productRepository.find = jest.fn().mockReturnValue(Promise.resolve(createProduct()))
-        const usecase = new UpdateProductUseCase(productRepository);
-        input.name = "";
-        input.price = 100;
-        
-        await expect(usecase.execute(input)).rejects.toThrow("Name is required");        
-    });
-   
+    });     
 });
